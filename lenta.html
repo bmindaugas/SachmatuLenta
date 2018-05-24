@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Šachmatai</title>
+    <style>
+        #lenta * {
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+            border: 0;
+        }
+
+        .langelis {
+            width: 64px;
+            height: 64px;
+            background-color: whitesmoke;
+            margin: 1.5px 3px 1.5px 3px;
+            display: inline-block;
+        }
+
+        .eilute.even .langelis.even {
+            background-color: black;
+
+        }
+
+        .eilute.odd .langelis.odd {
+            background-color: black;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="lenta"></div>
+    <script>
+        var game = {
+            boardParams: {
+                width: 8,
+                height: 8
+            },
+
+            figures: [
+                { type: "Q", pos: "A1" },
+                { type: "Q", pos: "A2" },
+                { type: "Q", pos: "A3" },
+                { type: "Q", pos: "E2" },
+            ],
+
+            collisions: [
+                ["A1", "A2", "A3"],
+                ["A2", "E2"],
+            ]
+        };
+
+        /* var myJSON = JSON.stringify(game); */
+
+        function elm(name) {
+            return document.getElementById(name);
+        }
+        function newElem(name) {
+            return document.createElement(name);
+        }
+
+        const lenta = document.getElementById('lenta');
+
+        for (let x = 1; x <= game.boardParams.height; x++) {
+            //piesiu eilute nr. X
+            let eilute = newElem("div");
+            lenta.appendChild(eilute);
+            eilute.classList.add(
+                x % 2 ? "odd" : "even" //lyginis nelyginis
+            );
+            eilute.classList.add(
+                "eilute" //lyginis nelyginis
+            );
+            for (let y = 1; y <= game.boardParams.width; y++) {
+                //piesiu eilute nr. X
+                let langelis = newElem("div");
+                eilute.appendChild(langelis);
+                langelis.classList.add(
+                    y % 2 ? "odd" : "even" //lyginis nelyginis
+                );
+                langelis.classList.add(
+                    "langelis" //lyginis nelyginis
+                );
+                langelis.classList.add(
+                    "langelis" + String.fromCharCode(x + 64) + y
+                );
+            }
+        }
+        for(let i = 0; i < game.figures.length; i++){
+            let figures = game.figures[i];
+        }
+    </script>
+</body>
+
+</html>
