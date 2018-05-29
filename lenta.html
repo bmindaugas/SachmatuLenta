@@ -9,7 +9,7 @@
         #lenta * {
             margin: 0;
             padding: 0;
-            font-size: 0;
+            font-size: 1em;
             border: 0;
         }
 
@@ -22,15 +22,14 @@
         }
 
         .eilute.even .langelis.even {
-            background-color: black;
+            background-color: rgba(78, 78, 78, 0.5);
 
         }
 
         .eilute.odd .langelis.odd {
-            background-color: black;
+            background-color: rgba(78, 78, 78, 0.5);
 
         }
-
     </style>
 </head>
 
@@ -92,9 +91,31 @@
                 );
             }
         }
-        for(let i = 0; i < game.figures.length; i++){
-            let figures = game.figures[i];
-        }
+
+        for( let i=0; i < game.figures.length; i++ ){
+
+let l = document.getElementsByClassName("langelis" + game.figures[i].pos);
+
+console.log(l);
+
+for (let j=0; j < l.length; j++){
+
+    l[j].innerHTML = game.figures[i].type;
+
+}
+
+
+
+}
+
+        // for (let i = 0; i < game.figures.length; i++) {
+        //     let figures = game.figures[i];
+        //     let elementai = document.getElementsByClassName("langelis" + game.figures[i].pos)
+        // }
+
+        // let figures = game.figures[i];
+        // console.log(elementai);
+        
     </script>
 </body>
 
